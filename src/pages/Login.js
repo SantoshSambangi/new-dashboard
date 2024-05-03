@@ -1,19 +1,14 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "../login/login.css";
 import "../pages/styles/login.css";
 import axios from "axios";
-// import LoadingSpinner from "../../components/loader";
 import LoadingSpinner from "../components/loader"
-// import { UserDataContext } from "../../providers/userdataprovider";
 import { UserDataContext } from "../providers/userdataprovider";
 
 const Login = () => {
     const navigate = useNavigate();
     const { setUserData } = useContext(UserDataContext);
-
     // console.log("login data",admiData)
-
     const [showLoader, setShowLoader] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -34,7 +29,7 @@ const Login = () => {
     };
 
     const isValidPassword = (password) => {
-        const symbolRegex = /[!@#$%^&*(),.?":{}|<>]/;
+        // const symbolRegex = /[!@#$%^&*(),.?":{}|<>]/;
         return password.length >= 8;
     };
 
@@ -61,7 +56,7 @@ const Login = () => {
             const url = "https://staging.api.greentiger.in/api/v1/auth";
 
             const response = await axios.post(url, formData);
-            console.log("res", response);
+            // console.log("res", response);
             if (response.status === 200) {
                 setShowLoader(false);
                 localStorage.setItem(

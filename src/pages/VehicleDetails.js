@@ -63,7 +63,7 @@ const top100Films = [
 const VehicleDetails = () => {
   return (
     <div>
-       <Box sx={{display:"flex", justifyContent:"space-between"}}>
+       <Box sx={{display:"flex", justifyContent:"space-around"}}>
          <Autocomplete
           multiple
           id="checkboxes-tags-demo"
