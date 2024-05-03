@@ -1,15 +1,20 @@
-import * as React from 'react';
+import React,{useContext} from 'react';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import DateRangePickerComponent from '../DateRangePickerReact';
 import { useLocation } from 'react-router-dom';
+import { UserDataContext} from '../../providers/userdataprovider';
 
 
-export default function ClippedDrawer(props) {
+export default function ClippedDrawer({count}) {
 
     const location = useLocation();
+
+    const {vehicleCount} = useContext(UserDataContext);
+    console.log("vehicle", vehicleCount)
+    // const {vehicleCount} = React.useContext(UserDataProvider)
 
   const handlePathName = () => {
     switch (location.pathname) {
@@ -43,7 +48,7 @@ export default function ClippedDrawer(props) {
           <Box sx={{display:"flex", alignItems:"center", gap:"20px"}}>
             <Box sx={{border:"1px solid gray", color:"black", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"2px 15px", borderRadius:"10px"}}>
                 <Typography variant='h5'>
-                    2
+                    {vehicleCount}
                 </Typography>
                 <Typography>
                     Vehicles
