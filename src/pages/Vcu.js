@@ -55,13 +55,13 @@ const Vcu = () => {
         {
             title: "Avg Motor temp",
             description: `DetailsFound : ${
-                extractedData[0]?.distanceTravelled.toFixed(2) || "0"
+                extractedData[0]?.distanceTravelled.toFixed(2) || "12827430"
             } ℃`,
         },
         {
             title: "Avg Controller temp",
             description: `DetailsFound : ${
-                extractedData[0]?.costSavings.toFixed(2) || "0"
+                extractedData[0]?.costSavings.toFixed(2) || "15062710"
             } ℃`,
         },
         {
@@ -250,9 +250,9 @@ const Vcu = () => {
                                     style={{
                                         fontWeight: "600",
                                         lineHeight: "1.57143",
-                                        fontSize: "0.875rem",
+                                        fontSize: "18px",
                                         fontFamily: "Public Sans",
-                                        color: "rgb(145, 158, 171)",
+                                        color: "#fff",
                                         whiteSpace: "nowrap",
                                     }}>
                                     {card.description}

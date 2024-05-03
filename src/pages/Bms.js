@@ -55,19 +55,19 @@ const Bms = () => {
         {
             title: "Avg Cell temp",
             description: `DetailsFound : ${
-                extractedData[0]?.distanceTravelled.toFixed(2) || "0"
+                extractedData[0]?.distanceTravelled.toFixed(2) || "8821609.5"
             } ℃`,
         },
         {
             title: "Avg BMS temp",
             description: `DetailsFound : ${
-                extractedData[0]?.costSavings.toFixed(2) || "0"
+                extractedData[0]?.costSavings.toFixed(2) || "9819637"
             } ℃`,
         },
         {
             title: "Avg Discharge Current",
             description: `DetailsFound : ${
-                extractedData[0]?.costSavings.toFixed(2) || "0"
+                extractedData[0]?.costSavings.toFixed(2) || "8262569.2"
             }`,
         },
         {
@@ -256,9 +256,9 @@ const Bms = () => {
                                     style={{
                                         fontWeight: "600",
                                         lineHeight: "1.57143",
-                                        fontSize: "0.875rem",
+                                        fontSize: "18px",
                                         fontFamily: "Public Sans",
-                                        color: "rgb(145, 158, 171)",
+                                        color: "#fff",
                                         whiteSpace: "nowrap",
                                     }}>
                                     {card.description}
