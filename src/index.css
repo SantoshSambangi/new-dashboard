@@ -16,3 +16,16 @@ code {
 .css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root{
   padding: 0px 2px !important;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+::-ms-overflow {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+

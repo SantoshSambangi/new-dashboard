@@ -235,8 +235,7 @@ const VehicleDetails = () => {
                                     gutterBottom
                                     variant="h5"
                                     component="div"
-                                    style={{
-                                        color: "rgb(33, 43, 54)",
+                                    sx={{
                                         fontWeight: "700",
                                         lineHeight: "1.5",
                                         fontSize: "1.25rem",
