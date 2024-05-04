@@ -5,6 +5,8 @@ export const UserDataContext = createContext();
 
 export const UserDataProvider = (props) => {
     const [userDetails, setUserDetails] = useState(null);
+    const [dateRange, setDateRange] = useState([]);
+    const [deviceIdData, setDeviceIdsData] = useState(null);
 
     //   set user details
     const setUserData = (data) => {
@@ -30,7 +32,15 @@ export const UserDataProvider = (props) => {
 
     return (
         <UserDataContext.Provider
-            value={{ userDetails, setUserData, handleLogout }}>
+            value={{
+                userDetails,
+                dateRange,
+                deviceIdData,
+                setUserData,
+                handleLogout,
+                setDateRange,
+                setDeviceIdsData,
+            }}>
             {props.children}
         </UserDataContext.Provider>
     );

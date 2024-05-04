@@ -32,9 +32,10 @@ const VehicleDetails = () => {
         cursor: "pointer",
     };
 
-    const { userDetails } = useContext(UserDataContext);
+    const { userDetails, dateRange, deviceIdData, setDeviceIdsData } =
+        useContext(UserDataContext);
 
-    const [deviceIdData, setDeviceIdsData] = useState(null);
+    // const [deviceIdData, setDeviceIdsData] = useState(null);
     const [selectedDevices, setSelectedDevices] = useState([]);
     const [vehicleStatisticsData, setVehicleStatisticsData] = useState();
     const [showloader, setShowLoader] = useState(false);
@@ -43,11 +44,10 @@ const VehicleDetails = () => {
     const extractedData = Object.values(vehicleStatisticsData?.data || []).map(
         (item) => ({
             distanceTravelled: item.distanceTravelled,
-
             co2Savings: item?.co2Savings,
             costSavings: item?.costSavings,
-            cellTemperature: item.cellTemperature,
-            bmsTemperature: item.bmsTemeperature,
+            // rideScore: item.cellTemperature,
+            // vehicleScore: item.bmsTemeperature,
         })
     );
 
@@ -55,31 +55,31 @@ const VehicleDetails = () => {
         {
             title: "Total Distance In (Km)",
             description: `DetailsFound : ${
-                extractedData[0]?.distanceTravelled.toFixed(2) || "900.04"
+                extractedData[0]?.distanceTravelled?.toFixed(2) || "900.04"
             } km`,
         },
         {
             title: "Carbon Savings",
             description: `DetailsFound : ${
-                extractedData[0]?.costSavings.toFixed(2) || "58.42"
+                extractedData[0]?.costSavings?.toFixed(2) || "58.42"
             } g/km`,
         },
         {
             title: "Cost Saving",
             description: `DetailsFound : ${
-                extractedData[0]?.costSavings.toFixed(2) || "3230.96"
+                extractedData[0]?.costSavings?.toFixed(2) || "3230.96"
             }`,
         },
         {
             title: "Rider score",
             description: `DetailsFound : ${
-                extractedData[0]?.bmsTemperature.toFixed(2) || "0"
+                extractedData[0]?.bmsTemperature?.toFixed(2) || "0"
             }`,
         },
         {
             title: "Vehicle  Score",
             description: `DetailsFound : ${
-                extractedData[0]?.cellTemperature.toFixed(2) || "0"
+                extractedData[0]?.cellTemperature?.toFixed(2) || "0"
             }`,
         },
     ];
@@ -89,8 +89,8 @@ const VehicleDetails = () => {
 
         if (newValue && newValue.length > 0) {
             getDashboardKpiData({
-                startDate: "2024-04-01", // change data here when ever device id selected in drop down
-                endDate: "2024-04-20",
+                startDate: dateRange[0], // change data here when ever device id selected in drop down
+                endDate: dateRange[1],
                 deviceIds: newValue.map((device) => device.deviceId),
             });
         } else {

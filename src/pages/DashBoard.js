@@ -45,7 +45,7 @@ const DashBoard = ({ children }) => {
                 <h1>DashBoard</h1>
                 {children}
                 <Box sx={btnBlockStyles}>
-                    {btnData?.map((item, index) => {
+                    {/* {btnData?.map((item, index) => {
                         const isActiveMenu = location.pathname.includes(
                             item?.toLowerCase().replace(/\s/g, "")
                         );
@@ -59,7 +59,34 @@ const DashBoard = ({ children }) => {
                                 {item}
                             </Button>
                         );
-                    })}
+                    })} */}
+                    <Button
+                        variant={
+                            location?.pathname === "/dashboard/vehicledetails"
+                                ? "contained"
+                                : "outlined"
+                        }
+                        onClick={() => navigate("/dashboard/vehicledetails")}>
+                        Vehicle Details
+                    </Button>
+                    <Button
+                        variant={
+                            location?.pathname === "/dashboard/bms"
+                                ? "contained"
+                                : "outlined"
+                        }
+                        onClick={() => navigate("/dashboard/bms")}>
+                        Bms Details
+                    </Button>
+                    <Button
+                        variant={
+                            location?.pathname === "/dashboard/vcu"
+                                ? "contained"
+                                : "outlined"
+                        }
+                        onClick={() => navigate("/dashboard/vcu")}>
+                        Vcu Details
+                    </Button>
                 </Box>
             </div>
         </React.Fragment>
