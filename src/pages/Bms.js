@@ -19,7 +19,7 @@ const Bms = () => {
         justifyContent: "center",
         alignItems: "center",
         width: "300px",
-        height: "164px",
+        height: "120px",
         backgroundColor: "blue",
         color: "#fff",
         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
@@ -32,9 +32,8 @@ const Bms = () => {
         cursor: "pointer",
     };
 
-    const { userDetails } = useContext(UserDataContext);
-
-    const [deviceIdData, setDeviceIdsData] = useState(null);
+    const { userDetails, dateRange, deviceIdData, setDeviceIdsData } =
+        useContext(UserDataContext);
     const [selectedDevices, setSelectedDevices] = useState([]);
     const [vehicleStatisticsData, setVehicleStatisticsData] = useState();
     const [showloader, setShowLoader] = useState(false);
@@ -42,12 +41,12 @@ const Bms = () => {
     // extract the vehicle data
     const extractedData = Object.values(vehicleStatisticsData?.data || []).map(
         (item) => ({
-            distanceTravelled: item.distanceTravelled,
-
-            co2Savings: item?.co2Savings,
-            costSavings: item?.costSavings,
             cellTemperature: item.cellTemperature,
-            bmsTemperature: item.bmsTemeperature,
+            bmsTemeperature: item?.bmsTemeperature,
+            currentDischarge: item?.currentDischarge,
+            temparatureAndFaults: item?.cellTemperature,
+            cycle: item?.cycle,
+            bmsFailures: item?.bmsFailures,
         })
     );
 
@@ -55,37 +54,37 @@ const Bms = () => {
         {
             title: "Avg Cell temp",
             description: `DetailsFound : ${
-                extractedData[0]?.distanceTravelled.toFixed(2) || "8821609.5"
+                extractedData[0]?.cellTemperature?.toFixed(2) || "8821609.5"
             } ℃`,
         },
         {
             title: "Avg BMS temp",
             description: `DetailsFound : ${
-                extractedData[0]?.costSavings.toFixed(2) || "9819637"
+                extractedData[0]?.bmsTemeperature?.toFixed(2) || "9819637"
             } ℃`,
         },
         {
             title: "Avg Discharge Current",
             description: `DetailsFound : ${
-                extractedData[0]?.costSavings.toFixed(2) || "8262569.2"
+                extractedData[0]?.currentDischarge?.toFixed(2) || "8262569.2"
             }`,
         },
         {
             title: "Temp ans Voltage faults",
             description: `DetailsFound : ${
-                extractedData[0]?.bmsTemperature.toFixed(2) || "0"
+                extractedData[0]?.temparatureAndFaults?.toFixed(2) || "0"
             }`,
         },
         {
             title: "Cycle",
             description: `DetailsFound : ${
-                extractedData[0]?.cellTemperature.toFixed(2) || "0"
+                extractedData[0]?.cycle?.toFixed(2) || "0"
             }`,
         },
         {
             title: "BMS Failures",
             description: `DetailsFound : ${
-                extractedData[0]?.cellTemperature.toFixed(2) || "0"
+                extractedData[0]?.bmsFailures?.toFixed(2) || "0"
             }`,
         },
     ];
@@ -95,8 +94,8 @@ const Bms = () => {
 
         if (newValue && newValue.length > 0) {
             getDashboardKpiData({
-                startDate: "2024-04-01", // change data here when ever device id selected in drop down
-                endDate: "2024-04-20",
+                startDate: dateRange[0], // change data here when ever device id selected in drop down
+                endDate: dateRange[1],
                 deviceIds: newValue.map((device) => device.deviceId),
             });
         } else {

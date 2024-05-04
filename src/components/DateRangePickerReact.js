@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { DatePicker } from "antd";
-// import 'antd/dist/antd.css';
-// import 'antd/dist/antd-with-locales';
-
+import { UserDataContext } from "../providers/userdataprovider";
+import moment from "moment";
 const { RangePicker } = DatePicker;
 
 const DateRangePickerComponent = () => {
-    const [dateRange, setDateRange] = useState([]);
-
-    const jsDates = dateRange && dateRange?.map((date) => date.$d);
+    const { dateRange, setDateRange } = useContext(UserDataContext);
 
     const handleDateChange = (dates) => {
-        setDateRange(dates);
+        if (dates && dates.length === 2) {
+            const dateObjects = dates.map((date) =>
+                moment(date).format("YYYY-MM-DD")
+            );
+            setDateRange(dateObjects);
+        } else {
+            setDateRange([]);
+        }
     };
 
     return (
@@ -21,7 +25,14 @@ const DateRangePickerComponent = () => {
                 border: "1px solid gray",
                 borderRadius: "10px",
             }}>
-            <RangePicker value={dateRange} onChange={handleDateChange} />
+            <RangePicker
+                value={
+                    dateRange.length === 2
+                        ? [moment(dateRange[0]), moment(dateRange[1])]
+                        : []
+                }
+                onChange={handleDateChange}
+            />
         </div>
     );
 };
