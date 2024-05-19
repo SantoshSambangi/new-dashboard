@@ -19,7 +19,7 @@ const Bms = () => {
         justifyContent: "center",
         alignItems: "center",
         width: "300px",
-        height: "120px",
+        height: "110px",
         backgroundColor: "blue",
         color: "#fff",
         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",

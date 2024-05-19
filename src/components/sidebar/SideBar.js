@@ -13,6 +13,9 @@ import { Link } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
+import ElectricMopedIcon from '@mui/icons-material/ElectricMoped';
+import BatteryChargingFullIcon from '@mui/icons-material/BatteryChargingFull';
+import ElectricScooterIcon from '@mui/icons-material/ElectricScooter';
 
 const drawerWidth = 220;
 
@@ -61,7 +64,7 @@ const SideBar = () => {
                                 to="/dashboard/vehicledetails">
                                 <ListItemButton>
                                     <ListItemIcon>
-                                        <DashboardIcon />
+                                        <ElectricMopedIcon/>
                                     </ListItemIcon>
                                     <ListItemText primary="VehicleDetails" />
                                 </ListItemButton>
@@ -72,7 +75,7 @@ const SideBar = () => {
                                 to="/dashboard/bms">
                                 <ListItemButton>
                                     <ListItemIcon>
-                                        <DashboardIcon />
+                                        <BatteryChargingFullIcon/>
                                     </ListItemIcon>
                                     <ListItemText primary="Bms" />
                                 </ListItemButton>
@@ -83,7 +86,7 @@ const SideBar = () => {
                                 to="/dashboard/vcu">
                                 <ListItemButton>
                                     <ListItemIcon>
-                                        <DashboardIcon />
+                                        <ElectricScooterIcon/>
                                     </ListItemIcon>
                                     <ListItemText primary="Vcu" />
                                 </ListItemButton>

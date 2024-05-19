@@ -5,6 +5,7 @@ import moment from "moment";
 const { RangePicker } = DatePicker;
 
 const DateRangePickerComponent = () => {
+    
     const { dateRange, setDateRange } = useContext(UserDataContext);
 
     const handleDateChange = (dates) => {

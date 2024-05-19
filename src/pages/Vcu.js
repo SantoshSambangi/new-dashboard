@@ -19,7 +19,7 @@ const Vcu = () => {
         justifyContent: "center",
         alignItems: "center",
         width: "300px",
-        height: "120px",
+        height: "110px",
         backgroundColor: "red",
         color: "#fff",
         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
@@ -50,7 +50,7 @@ const Vcu = () => {
         })
     );
 
-    console.log("111", extractedData);
+    console.log("extracted data", extractedData);
 
     const cardsData = [
         {
@@ -140,9 +140,9 @@ const Vcu = () => {
             getDashboardKpiData({
                 startDate: "2024-04-01",
                 endDate: "2024-04-20", // change data here onload the page display data
-                cumulative: 1,
-                clientId: userDetails.clientId,
-                type: "LOGIN",
+                // cumulative: 1,
+                // clientId: userDetails.clientId,
+                // type: "LOGIN",
             });
         }
     }, [userDetails]);

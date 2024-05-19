@@ -20,7 +20,7 @@ const VehicleDetails = () => {
         justifyContent: "center",
         alignItems: "center",
         width: "300px",
-        height: "120px",
+        height: "110px",
         backgroundColor: "green",
         color: "#fff",
         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
@@ -149,7 +149,6 @@ const VehicleDetails = () => {
     const getDashboardKpiData = async (data) => {
         const baseUrl =
             "https://staging.api.greentiger.in/api/v1/dashboard_kpis";
-
         try {
             setShowLoader(true);
             const accessToken = localStorage.getItem("accessToken");
@@ -159,7 +158,6 @@ const VehicleDetails = () => {
                 },
             });
             console.log("111", response);
-
             if (response.status === 200) {
                 setShowLoader(false);
                 setVehicleStatisticsData(response?.data);
